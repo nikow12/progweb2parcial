@@ -169,7 +169,7 @@ const eliminarProducto = async (req, res) => {
                 mensaje: "Producto no encontrado"
             });
         }
-        // Elimina realmente el registro de SQL SERVER
+        // Elimina el registro de SQL SERVER
         await producto.destroy();
         res.status(200).json({
             mensaje: "Producto eliminado correctamente"
@@ -189,13 +189,13 @@ const buscarProductos = async (req, res) => {
     try {
 
         const { nombre } = req.query;
-        // Si no se envía nombre
+        // Si no se envia nombre
         if (!nombre) {
             return res.status(400).json({
                 mensaje: "Debe proporcionar un nombre para buscar"
             });
         }
-        // Op.like permite coincidencias parciales
+        // Op.like de node permite coincidencias parciales
         const productos = await Producto.findAll({
             where: {
                 nombre: {
